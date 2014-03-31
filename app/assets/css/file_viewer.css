@@ -1,0 +1,134 @@
+#kittcat-file-viewer {
+  float: left;
+  min-height: 300px;
+  width: 75%;
+}
+
+#kittcat-file-viewer h2 {
+  margin-top: 0;
+  margin-left: 20px;
+}
+
+#kittcat-file-viewer h2 .glyphicon-file:before {
+  padding-right: 10px;
+}
+
+#kittcat-file-viewer .viewer {
+  margin-top: 15px;
+}
+
+#kittcat-file-viewer pre .selected-line {
+  float: left;
+  margin-left: 1px;
+  width: 100%;
+  background-color: #EEE;
+}
+
+/* --- Infos --- */
+
+#kittcat-file-viewer .source-infos-options {
+  background-color: #eaeaea;
+
+  border: 1px solid #CCC;
+  border-bottom: none;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+
+  height: 45px;
+
+}
+
+#kittcat-file-viewer .infos {
+  float: left;
+  height: 100%;
+  font-size: 0.85em;
+}
+
+#kittcat-file-viewer .infos .info-row {
+  float: left;
+  min-height: 100%;
+  border-right: 1px solid #CCC;
+  padding: 14px 20px 0 20px;
+}
+
+#kittcat-file-viewer .options {
+  float: right;
+  padding-top: 5px;
+  margin-right: 20px;
+}
+
+#kittcat-file-viewer .option {
+  float: left;
+  margin-left: 20px;
+}
+
+#kittcat-file-viewer select {
+  width: inherit !important;
+}
+
+.customSelect {
+  font-size: 0.85em;
+  background-color: #F5F5F5;
+  padding: 10px 15px;
+  text-align: center;
+  text-transform: capitalize;
+  height: 35px;
+  border-radius: 7px;
+  border: 1px solid #E0E0E0;
+}
+
+.customSelectInner {
+  display: inline !important;
+}
+
+.customSelectInner::after {
+  padding-left: 5px;
+  content: "\25BC";
+}
+
+/* --- Source Code --- */
+
+#kittcat-file-viewer .source-code {
+  border: 1px solid #CCC;
+  font-family: monospace;
+  font-size: medium;
+
+  -webkit-border-top-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  border-top-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+}
+
+#kittcat-file-viewer .source-lines {
+  cursor: pointer;
+  float: left;
+  padding: 8px 5px 5px 5px;
+
+  border: 1px solid #CCC;
+  border-right: none;
+
+  -webkit-border-bottom-left-radius:
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
+
+  line-height: 1.5em;
+  text-align: center;
+  color: #AAA;
+
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+#kittcat-file-viewer .source-lines .line-number {
+  display: block;
+}

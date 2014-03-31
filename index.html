@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test kitt cat</title>
+    <meta name="description" content="Kitt cat app">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Vendor -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" data-style="highlight" href="vendor/highlight/css/github.css">
+
+    <!-- Kittcat application -->
+    <link rel="stylesheet" href="app/assets/css/kittcat.css">
+    <link rel="stylesheet" href="app/assets/css/explorer.css">
+    <link rel="stylesheet" href="app/assets/css/file_viewer.css">
+  </head>
+  <body>
+    <div id="kitt-cat"></div>
+
+    <!-- # Vendor -->
+    <script src="vendor/js/jquery-2.1.0.min.js" type="text/javascript"></script>
+    <script src="vendor/js/jquery.customSelect.min.js" type="text/javascript"></script>
+    <script src="vendor/js/angular.js" type="text/javascript"></script>
+
+    <script src="vendor/js/base.js" type="text/javascript"></script>
+    <script src="vendor/js/underscore-min.js" type="text/javascript"></script>
+    <script src="vendor/highlight/js/highlight.pack.js" type="text/javascript"></script>
+
+    <!-- # App -->
+
+    <!-- ## Config -->
+    <script src="config/languages.list.js" type="text/javascript"></script>
+
+    <!-- ## Dev dependencies -->
+    <script src="lib/dev/kittcat-template.js" type="text/javascript"></script>
+
+    <!-- ## Kittcat application -->
+    <script src="app/kittcat/jquery.kittcat.js" type="text/javascript"></script>
+    <script src="app/kittcat/angular.kittcat.js" type="text/javascript"></script>
+
+    <!-- ### Helpers -->
+    <script src="app/helpers/recursion_helper.js" type="text/javascript"></script>
+
+    <!-- ### Models -->
+    <script src="app/models/tree.js" type="text/javascript"></script>
+
+    <!-- ### Controllers -->
+    <script src="app/controllers/kittcat_controller.js" type="text/javascript"></script>
+    <script src="app/controllers/explorer_controller.js" type="text/javascript"></script>
+    <script src="app/controllers/node_controller.js" type="text/javascript"></script>
+    <script src="app/controllers/file_viewer_controller.js" type="text/javascript"></script>
+
+    <!-- ### Directives -->
+    <script src="app/directives/kittcat_container.js" type="text/javascript"></script>
+    <script src="app/directives/kittcat_explorer.js" type="text/javascript"></script>
+    <script src="app/directives/explorer_node.js" type="text/javascript"></script>
+    <script src="app/directives/file_viewer.js" type="text/javascript"></script>
+
+    <!-- ### Factories -->
+
+    <!-- ### Services -->
+    <script src="app/services/source_code.js" type="text/javascript"></script>
+    <script src="app/services/source_file.js" type="text/javascript"></script>
+    <script src="app/services/options.js" type="text/javascript"></script>
+
+    <!-- # Example App -->
+    <script src="main.js" type="text/javascript"></script>
+
+
+    <!-- Templates -->
+    <script type="text/ng-template" data-name="container">
+      <kittcat-container></kittcat-container>
+    </script>
+
+    <script type="text/ng-template" data-name="kittcat-container">
+      <div id="kittcat-container">
+        <header id="tree-header">
+          <h1 class="title-tree">{{ treeName }} /</h1>
+        </header>
+        <kittcat-explorer></kittcat-explorer>
+        <file-viewer></file-viewer>
+      </div>
+    </script>
+
+    <script type="text/ng-template" data-name="kittcat-explorer">
+      <div id="kittcat-explorer" ng-controller="ExplorerController">
+        <div class="tree well well-small">
+          <ul id="root" class="nav nav-list">
+            <li class="nav-header">Files</li>
+            <div explorer-node class="explorer-node" ng-repeat="node in tree" ng-controller="NodeController"></div>
+          </ul>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/ng-template" data-name="explorer-node">
+        <li ng-if="node.is_dir" class="dir-name dir-{{ node._id }}">
+          <a class="name" href="#{{_id}}"><span class="glyphicon glyphicon-folder-close"></span>{{ node.name }}/</a>
+        </li>
+        <ul ng-if="node.is_dir" class="dir nav nav-list hidden" id="{{ node._id }}">
+          <div explorer-node class="explorer-node" ng-repeat="node in tree" ng-controller="NodeController"></div>
+        </ul>
+        <li ng-if="node.is_dir == 0" class="file-name file-{{ node._id }}" ng-click="showFile(node)">
+          <a class="name" href="#{{_id}}"><span class="glyphicon glyphicon-file"></span>{{ node.name }}</a>
+        </li>
+    </script>
+
+    <script type="text/ng-template" data-name="kittcat-file-viewer">
+      <div id="kittcat-file-viewer" class="well" ng-controller="FileViewerController">
+        <div class="file-container" ng-if="source.code">
+          <h2><span class="glyphicon glyphicon-file">{{ name }}</h2>
+
+          <div class="viewer">
+
+            <div class="source-infos-options">
+              <div class="infos">
+                <div class="info-row">
+                  <span class="detected-language"><strong>{{ source.detectedLang }}</strong> file detected</span>
+                </div>
+                <div class="info-row">
+                  <span class="number-of-lines-of-code"><strong>{{ source.NLoC }}</strong> lines</span>
+                </div>
+                <div class="info-row">
+                  <span class="path">{{ file.getPath() }}</span>
+                </div>
+              </div>
+              <div class="options" ng-init="optionsHelper.customizeSelect()">
+                <div class="option lang">
+                  <select ng-model="$parent.sourceLang" name="source-lang" ng-options="lang as lang for lang in allLangs" ng-change="source.formatCode()"></select>
+                </div>
+                <div class="option style">
+                  <select ng-model="$parent.langStyle" name="source-style" ng-options="style as style for style in langStyles" ng-change="optionsHelper.selectLangHighlight()"></select>
+                </div>
+              </div>
+            </div>
+
+            <div class="source-viewer">
+                 <div class="source-lines hljs">
+                   <div class="hljs-comment" ng-repeat="lineNumber in source.NLoCArray">
+                     <span ng-click="optionsHelper.selectLine($index)" class="line-number">{{ lineNumber }}</span>
+                   </div>
+                 </div>
+                 <pre class="source-code hljs" ng-bind-html="formattedSource"></pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </script>
+  </body>
+</html>

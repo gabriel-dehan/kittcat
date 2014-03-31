@@ -1,0 +1,105 @@
+/* =KITTCAT */
+
+#kittcat-explorer {
+  float: left;
+  width: 20%;
+  margin-right: 35px;
+  min-height: 300px;
+}
+
+#root > .explorer-node > li.file-name a, #root > .explorer-node > li.dir-name a {
+  padding-left: 0;
+}
+
+#kittcat-explorer .file-name .glyphicon::before, #kittcat-explorer .dir-name .glyphicon::before {
+  padding-right: 5px;
+}
+
+#kittcat-explorer .nav-header {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 1.2em;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 6px;
+}
+
+#kittcat-explorer .well-small {
+  padding: 10px 20px;
+}
+
+/* =TREE */
+
+#tree-header {
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.tree {
+    width: 100%;;
+    float: left;
+    padding-bottom: 20px;
+}
+
+.tree .nav:first-child {
+  padding-left: 0;
+}
+
+.tree .nav {
+  padding: 2px 0 2px 19px;
+}
+
+.tree .nav .explorer-node > li:hover {
+    text-decoration: none;
+    background-color: #EEE;
+}
+
+.tree .nav .explorer-node  > li.selected:hover {
+  background-color: #08C;
+}
+
+.tree .nav .explorer-node > li.selected > a:hover {
+  background-color: #08C;
+}
+
+
+.tree .nav .explorer-node > li.selected:hover > a {
+  background-color: #08C;
+}
+
+.tree .nav .explorer-node > .nav-header:hover {
+    background-color: transparent;
+}
+
+.tree .file-name a, .tree .dir-name a {
+    display: inline-block;
+    padding-left: 5px
+}
+
+.tree .nav-list {
+    padding-right: 0;
+}
+
+.tree .nav-header {
+  width: 100%;
+}
+
+/* ==TITLE */
+h1.title-tree {
+  padding-left: 10px;
+  color: #444;
+  width: 80%;
+  display: inline-block;
+  float: left;
+  margin-bottom: 25px;
+}
+
+/* ==FILES */
+.file-name.selected, .dir-name.selected {
+  background-color: #3FB2FF;
+}
+
+.file-name.selected a, .dir-name.selected a {
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #3FB2FF;
+}

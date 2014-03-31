@@ -1,0 +1,93 @@
+[{
+    "root"          : true,
+    "is_dir"        : 1,
+    "owner"         : "",
+    "users"         : "",
+    "name"          : "My Project",
+    "_id"           : 1,
+    "created_at"    : "2012-14-04",
+    "last_modified" : "2012-14-04",
+    "tree"          : [
+        {
+            "is_dir"        : 0,
+            "_id"           : 2,
+            "name"          : "File 1",
+            "created_at"    : "2012-14-04",
+            "last_modified" : "2012-14-04"
+        },
+        {
+            "is_dir"        : 0,
+            "_id"           : 3,
+            "name"          : "File 2",
+            "created_at"    : "2012-14-04",
+            "last_modified" : "2012-14-04"
+        },
+        {
+            "is_dir"        : 1,
+            "_id"           : 4,
+            "name"          : "Dir 1",
+            "created_at"    : "2012-14-04",
+            "last_modified" : "2012-14-04",
+            "tree"          : [
+                {
+                    "is_dir"        : 0,
+                    "_id"           : 5,
+                    "name"          : "File 2",
+                    "created_at"    : "2012-14-04",
+                    "last_modified" : "2012-14-04"
+                }
+            ]
+        },
+        {
+            "is_dir"        : 1,
+            "_id"           : 6,
+            "name"          : "Dir 2",
+            "created_at"    : "2012-14-04",
+            "last_modified" : "2012-14-04",
+            "tree"          : [
+                {
+                    "is_dir"        : 1,
+                    "_id"           : 7,
+                    "name"          : "Subdir",
+                    "created_at"    : "2012-14-04",
+                    "last_modified" : "2012-14-04",
+                    "tree"          : [
+                        {
+                            "is_dir"        : 0,
+                            "_id"           : 8,
+                            "name"          : "File 3",
+                            "created_at"    : "2012-14-04",
+                            "last_modified" : "2012-14-04"
+                        }
+                    ]
+
+                },
+                {
+                    "is_dir"        : 1,
+                    "_id"           : 9,
+                    "name"          : "Subdir 2",
+                    "created_at"    : "2012-14-04",
+                    "last_modified" : "2012-14-04",
+                    "tree"          : [
+                        {
+                            "is_dir"        : 0,
+                            "_id"           : 10,
+                            "name"          : "File 4",
+                            "created_at"    : "2012-14-04",
+                            "last_modified" : "2012-14-04"
+                        }
+                    ]
+
+                },
+                {
+                    "is_dir"        : 0,
+                    "_id"           : 11,
+                    "name"          : "Last File",
+                    "created_at"    : "2012-14-04",
+                    "last_modified" : "2012-14-04"
+                }
+            ]
+
+        }
+    ]
+}]

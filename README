@@ -1,0 +1,27 @@
+# A JS Plugin
+
+# File explorer
+
+You instanciate it like that :
+
+$('Element').kittcat({
+  api: 'localhost:3000/'
+});
+
+=> Add a ng-app to the element
+
+# Todo :
+- Comment
+- Account url to load files directly
+- When clicking on a file path open up the tree
+- When loading a file directly open up the tree
+- Watch for line changes
+- When specifying line in hash load the file with the line selected
+
+- Refactor things into directives (especially when needing a timeout, see : http://stackoverflow.com/questions/22149551/calling-a-jquery-function-inside-an-angular-directives-after-changes-to-ng-bind)
+
+// URLS are like .../#F1-L15
+
+- Make grunt.js task to compile templates in one swift document.kittcat.templates
+- Make grunt.js compile all javascript files in one swift file (except some dependencies)
+- Make a grunt.js task to do the previous two and make it ready for production
