@@ -3,10 +3,12 @@ $.fn.kittcat = function(opts) {
     this.attr('ng-controller', 'KittcatController');
     this.html(document.templates['container']);
 
-    var api_host = opts.api || document.location.host,
+    var api_host = opts.api || document.location.href,
         endpoint = opts.endpoint || 'data',
         file_endpoint = opts.fileEndpoint || '/file'
         tree_endpoint = opts.treeEndpoint || '/tree';
+
+    console.log(api_host)
 
     document.kittcat = document.kittcat || {}
 
