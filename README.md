@@ -4,7 +4,20 @@
 ## Demo-app :
 http://gabriel-dehan.github.io/kittcat
 
-## A Jquery File/Source Code Explorer Plugin
+## Dependencies
+
+(Most will be packaged with the app in a future version);
+
+- jQuery
+- Angular JS
+- Highlight JS
+- jQuery Custom Select
+- Underscore JS
+- Base JS
+
+- Bootstrap CSS
+
+# A Jquery File/Source Code Explorer Plugin
 
 ## You instanciate it like that :
 
@@ -68,6 +81,21 @@ You must provide two API endpoints :
     ]
 }]
 ```
+
+# What it does already :
+
+- Display a file tree
+  - You can click on a folder to open it
+  - You can click on a open folder to close it
+  - You can click on a file to open it
+
+- Displaying a file
+  - You can select a line by clicking on it's number
+  - Automatic language detection
+  - You can choose the language for the file highlight
+  - You can choose a theme for the file display (default: github)
+  - Displays options for the file (number of lines, type of file, path)
+
 
 # Todo :
 - Comment
