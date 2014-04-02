@@ -3,14 +3,13 @@ $.fn.kittcat = function(opts) {
     this.attr('ng-controller', 'KittcatController');
     this.html(document.templates['container']);
 
-    var api_host = opts.api || document.location.href,
+    console.log(document.location);
+    var api_host = opts.api || document.location.origin,
         endpoint = opts.endpoint || 'data',
-        file_endpoint = opts.fileEndpoint || '/file'
+        file_endpoint = opts.fileEndpoint || '/file',
         tree_endpoint = opts.treeEndpoint || '/tree';
 
-    console.log(api_host)
-
-    document.kittcat = document.kittcat || {}
+    document.kittcat = document.kittcat || {};
 
     document.kittcat['api_host'] = api_host;
     document.kittcat['api_endpoint'] = endpoint;
@@ -35,6 +34,8 @@ $.fn.kittcat = function(opts) {
             var self = target.parent(),
             id       = target.attr('href');
         }
+
+        document.kittcat.helpers.treeExplorer.unselectAll();
         $('.file-name.selected, .dir-name.selected').removeClass('selected');
         self.next('.dir').toggleClass('hidden');
 
@@ -48,6 +49,14 @@ $.fn.kittcat = function(opts) {
             self.addClass('selected');
         }
     });
+
+
+    // Helpers
+    document.kittcat.helpers = {};
+    document.kittcat.helpers.treeExplorer = {};
+    document.kittcat.helpers.treeExplorer.unselectAll = function() {
+        $('.file-name.selected, .dir-name.selected').removeClass('selected');
+    }
 
     return this;
 };

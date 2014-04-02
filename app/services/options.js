@@ -41,5 +41,23 @@ var viewerOptionsHelper = Base.extend({
         });
 
         $('pre.source-code.hljs').html(new_lines.join('<br>'));
+    },
+
+    openTree: function() {
+        var path = this.scope.file.getPath().split('/').slice(1),
+            name = this.scope.name;
+
+        this.openTreeWithPath(path, name);
+    },
+
+    openTreeWithPath: function(path, name) {
+        _.each(path, function(dir) {
+            console.log(dir, name);
+            if (dir !== name) {
+                $('#kittcat-explorer').find('li.dir-name:contains("' + dir + '/") ~ ul.hidden').prev('li.dir-name').click();
+            } else {
+                $('#kittcat-explorer').find('li.file-name:contains("' + name + '")').click();
+            }
+        });
     }
 });

@@ -64,6 +64,7 @@
     <script src="app/services/source_code.js" type="text/javascript"></script>
     <script src="app/services/source_file.js" type="text/javascript"></script>
     <script src="app/services/options.js" type="text/javascript"></script>
+    <script src="app/services/routes.js" type="text/javascript"></script>
 
     <!-- # Example App -->
     <script src="main.js" type="text/javascript"></script>
@@ -122,8 +123,8 @@
                 <div class="info-row">
                   <span class="number-of-lines-of-code"><strong>{{ source.NLoC }}</strong> lines</span>
                 </div>
-                <div class="info-row">
-                  <span class="path">{{ file.getPath() }}</span>
+                <div class="info-row path">
+                  <span class="path" ng-click="optionsHelper.openTree()">{{ file.getPath() }}</span>
                 </div>
               </div>
               <div class="options" ng-init="optionsHelper.customizeSelect()">
