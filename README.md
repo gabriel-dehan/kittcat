@@ -1,4 +1,6 @@
 # Kitt $ cat
+A Jquery File/Source Code Explorer Plugin.
+
 `kittcat -v 0.2.0`
 
 ## Demo-app :
@@ -20,9 +22,9 @@ http://gabriel-dehan.github.io/kittcat
 ### CSS
 - Bootstrap CSS
 
-# A Jquery File/Source Code Explorer Plugin
+## Usage
 
-## You instanciate it like that :
+### You instanciate it like that :
 
 ```javascript
 $('#my-explorer').kittcat({
@@ -32,7 +34,7 @@ $('#my-explorer').kittcat({
 });
 ```
 
-## API
+### API
 
 You __must__ provide two _API endpoints_ (URLs to request from) :
 
@@ -87,7 +89,7 @@ You __must__ provide two _API endpoints_ (URLs to request from) :
 
 You can see a full example of this JSON structure in the `data/tree.json` file.
 
-# What it does already :
+## What it does already :
 
 - Display a file tree
   - You can click on a folder to open it
@@ -104,13 +106,13 @@ You can see a full example of this JSON structure in the `data/tree.json` file.
   - Clicking on a file's path will open it's folder
   - Stores the chosen highlighting in the session
 
-# Todo :
+## Todo :
 - Comment
 
 - Make grunt.js task to compile templates in one swift document.kittcat.templates
 - Make grunt.js compile all javascript files in one swift file (except some dependencies)
 - Make a grunt.js task to do the previous two and make it ready for production
 
-# License
+## License
 
 [WTFPL](http://www.wtfpl.net/)
