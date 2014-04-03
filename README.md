@@ -1,5 +1,5 @@
 # Kitt $ cat
-`kittcat -v 0.0.1`
+`kittcat -v 0.2.0`
 
 ## Demo-app :
 http://gabriel-dehan.github.io/kittcat
@@ -8,13 +8,16 @@ http://gabriel-dehan.github.io/kittcat
 
 (Most will be packaged with the app in a future version);
 
+### JS
 - jQuery
 - Angular JS
+- Angular Cookies JS
 - Highlight JS
 - jQuery Custom Select
 - Underscore JS
 - Base JS
 
+### CSS
 - Bootstrap CSS
 
 # A Jquery File/Source Code Explorer Plugin
@@ -22,19 +25,19 @@ http://gabriel-dehan.github.io/kittcat
 ## You instanciate it like that :
 
 ```javascript
-$('Element').kittcat({
+$('#my-explorer').kittcat({
   api: 'localhost:3000/',
   fileEndpoint: '/file',
   treeEndpoint: '/tree.json'
 });
 ```
 
-### Api endpoints
+## API
 
-You must provide two API endpoints :
+You __must__ provide two _API endpoints_ (URLs to request from) :
 
-- the `fileEndpoint` that will answer to get requests like `myEndPoint/1` and should answer with the file with id 1's content.
-- the `treeEndpoint` that will answer to get requests like `myEndPoint` and should answer with a JSON tree formatted like this :
+- the `fileEndpoint` : will answer to `get` requests like `myEndPoint/1` and must answer with the file's (here with id 1) content.
+- the `treeEndpoint` will answer to `get` requests like `myEndPoint` and must answer with a JSON tree formatted like this :
 ```json
 [{
     "root"          : true,
@@ -82,6 +85,8 @@ You must provide two API endpoints :
 }]
 ```
 
+You can see a full example of this JSON structure in the `data/tree.json` file.
+
 # What it does already :
 
 - Display a file tree
@@ -90,25 +95,22 @@ You must provide two API endpoints :
   - You can click on a file to open it
 
 - Displaying a file
+  - Load Files and Select lines according to URL ( `/#F1-L8` will open the first file on line 8)
   - You can select a line by clicking on it's number
   - Automatic language detection
   - You can choose the language for the file highlight
   - You can choose a theme for the file display (default: github)
   - Displays options for the file (number of lines, type of file, path)
-
+  - Clicking on a file's path will open it's folder
+  - Stores the chosen highlighting in the session
 
 # Todo :
 - Comment
-- Account url to load files directly
-- When clicking on a file path open up the tree
-- When loading a file directly open up the tree
-- Watch for line changes
-- When specifying line in hash load the file with the line selected
-
-- Refactor things into directives (especially when needing a timeout, see : http://stackoverflow.com/questions/22149551/calling-a-jquery-function-inside-an-angular-directives-after-changes-to-ng-bind)
-
-// URLS are like .../#F1-L15
 
 - Make grunt.js task to compile templates in one swift document.kittcat.templates
 - Make grunt.js compile all javascript files in one swift file (except some dependencies)
 - Make a grunt.js task to do the previous two and make it ready for production
+
+# License
+
+[WTFPL](http://www.wtfpl.net/)
