@@ -3,8 +3,9 @@ app.factory('viewerOptions', function() {
 });
 
 var viewerOptionsHelper = Base.extend({
-    constructor: function(scope) {
+    constructor: function(scope, cookies) {
         this.scope = scope;
+        this.session = cookies;
     },
 
     customizeSelect: function() {
@@ -17,11 +18,27 @@ var viewerOptionsHelper = Base.extend({
         $('.option.lang .customSelectInner').text(lang);
     },
 
+    selectDefaultLangHighlight: function(source) {
+        var userStyle = this.session.get('kittcatHighlight'),
+            style     = '';
+
+        if (userStyle) {
+            style = userStyle;
+            this.selectLangHighlight(style);
+        } else {
+            style = source.getCurrentStyle();
+        }
+
+        return style;
+    },
+
     /* Modifies the link tag linking to highlighjs styles, replacing it with the one we want  */
-    selectLangHighlight: function() {
-        var style = this.scope.langStyle,
+    selectLangHighlight: function(style) {
+        var style = style || this.scope.langStyle,
             currentStyle = $('link[data-style="highlight"'),
             url = currentStyle.attr('href');
+
+        this.session.put('kittcatHighlight', style);
 
         currentStyle.attr('href', url.replace(/\/(?:\.|\-|\w)*\.css/, '/' + style + '.css'));
     },
