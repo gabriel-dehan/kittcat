@@ -1,4 +1,4 @@
-app.controller('FileViewerController', function($rootScope, $scope, $http, $sce, $location, sourceCode, sourceFile, viewerOptions) {
+app.controller('FileViewerController', function($rootScope, $scope, $http, $sce, $location, $cookieStore, sourceCode, sourceFile, viewerOptions) {
     $scope.allLangs = document.kittcat.languages;
     $scope.langStyles = document.kittcat.langStyles;
 
@@ -9,14 +9,14 @@ app.controller('FileViewerController', function($rootScope, $scope, $http, $sce,
         $http.get(document.kittcat['api_url'] + '/file/' + node._id).success(function(data) {
             var source  = new sourceCode($scope, data, $sce),
                 file    = new sourceFile($rootScope.treeModel, node),
-                options = new viewerOptions($scope);
+                options = new viewerOptions($scope, $cookieStore);
 
             // Set all the needed helpers
             $scope.source = source;
             $scope.file = file;
             $scope.optionsHelper = options;
 
-            $scope.langStyle = source.getCurrentStyle();
+            $scope.langStyle = options.selectDefaultLangHighlight(source);
 
             // Sets the models & variables
             source.detectLanguage();
@@ -26,6 +26,8 @@ app.controller('FileViewerController', function($rootScope, $scope, $http, $sce,
 
             // Eye candy
             options.updateSelects(source.detectedLang);
+
+            $scope.router.loadLine();
         });
     });
 });

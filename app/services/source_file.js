@@ -6,6 +6,7 @@ var sourceFileHelper = Base.extend({
     constructor: function(tree, file) {
         this.tree = tree;
         this.file = file;
+        this.id = file._id
     },
 
     getPath: function() {

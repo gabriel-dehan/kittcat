@@ -55,6 +55,10 @@
   padding: 14px 20px 0 20px;
 }
 
+#kittcat-file-viewer .infos .path {
+  cursor: pointer;
+}
+
 #kittcat-file-viewer .options {
   float: right;
   padding-top: 5px;
@@ -131,4 +135,6 @@
 
 #kittcat-file-viewer .source-lines .line-number {
   display: block;
+  color: inherit;
+  text-decoration: none;
 }
