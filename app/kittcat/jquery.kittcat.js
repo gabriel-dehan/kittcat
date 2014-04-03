@@ -3,7 +3,6 @@ $.fn.kittcat = function(opts) {
     this.attr('ng-controller', 'KittcatController');
     this.html(document.templates['container']);
 
-    console.log(document.location);
     var api_host = opts.api || document.location.origin,
         endpoint = opts.endpoint || 'data',
         file_endpoint = opts.fileEndpoint || '/file',

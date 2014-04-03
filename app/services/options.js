@@ -34,7 +34,7 @@ var viewerOptionsHelper = Base.extend({
         _.each(lines, function(line, i, lines) {
             if (line.match(/selected-line/)) {
                 line = $(line).html();
-            } else if (i === index && line !== '') {
+            } else if (i == index && line !== '') {
                 line = '<span class="selected-line">' + line + '</span>';
             }
             new_lines.push(line);
@@ -52,7 +52,6 @@ var viewerOptionsHelper = Base.extend({
 
     openTreeWithPath: function(path, name) {
         _.each(path, function(dir) {
-            console.log(dir, name);
             if (dir !== name) {
                 $('#kittcat-explorer').find('li.dir-name:contains("' + dir + '/") ~ ul.hidden').prev('li.dir-name').click();
             } else {

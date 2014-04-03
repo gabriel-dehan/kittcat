@@ -135,4 +135,6 @@
 
 #kittcat-file-viewer .source-lines .line-number {
   display: block;
+  color: inherit;
+  text-decoration: none;
 }

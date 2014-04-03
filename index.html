@@ -104,7 +104,7 @@
           <div explorer-node class="explorer-node" ng-repeat="node in tree" ng-controller="NodeController"></div>
         </ul>
         <li ng-if="node.is_dir == 0" class="file-name file-{{ node._id }}" ng-click="showFile(node)">
-          <a class="name" href="#{{_id}}"><span class="glyphicon glyphicon-file"></span>{{ node.name }}</a>
+          <a class="name" href="#F{{node._id}}"><span class="glyphicon glyphicon-file"></span>{{ node.name }}</a>
         </li>
     </script>
 
@@ -140,7 +140,7 @@
             <div class="source-viewer">
                  <div class="source-lines hljs">
                    <div class="hljs-comment" ng-repeat="lineNumber in source.NLoCArray">
-                     <span ng-click="optionsHelper.selectLine($index)" class="line-number">{{ lineNumber }}</span>
+                     <a href="#F{{file.id}}-L{{$index + 1}}" ng-click="optionsHelper.selectLine($index)" class="line-number">{{ lineNumber }}</a>
                    </div>
                  </div>
                  <pre class="source-code hljs" ng-bind-html="formattedSource"></pre>

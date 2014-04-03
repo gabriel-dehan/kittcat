@@ -26,6 +26,8 @@ app.controller('FileViewerController', function($rootScope, $scope, $http, $sce,
 
             // Eye candy
             options.updateSelects(source.detectedLang);
+
+            $scope.router.loadLine();
         });
     });
 });
