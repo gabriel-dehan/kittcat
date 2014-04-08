@@ -17,7 +17,7 @@ var sourceCodeHelper = Base.extend({
     },
 
     getCurrentStyle: function() {
-        return $('link[data-style="highlight"').attr('href').match(/\/((\.|\-|\w)*)\.css/)[1];
+        return $('link[data-style="highlight"]').attr('href').match(/\/((\.|\-|\w)*)\.css/)[1];
     },
 
     computeSourceLength: function() {

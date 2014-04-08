@@ -1,4 +1,4 @@
-app.controller('FileViewerController', function($rootScope, $scope, $http, $sce, $location, $cookieStore, sourceCode, sourceFile, viewerOptions) {
+app.controller('FileViewerController', function($rootScope, $scope, $http, $sce, $cookieStore, sourceCode, sourceFile, viewerOptions) {
     $scope.allLangs = document.kittcat.languages;
     $scope.langStyles = document.kittcat.langStyles;
 
